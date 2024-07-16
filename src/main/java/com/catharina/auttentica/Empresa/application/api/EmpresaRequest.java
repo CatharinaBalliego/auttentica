@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Size;
 import lombok.Value;
 
 @Value
-public class CadastrarEmpresaRequest {
+public class EmpresaRequest {
     @NotBlank
     @Size(message = "Campo nome não pode estar vazio!", max = 100)
     private String nome;

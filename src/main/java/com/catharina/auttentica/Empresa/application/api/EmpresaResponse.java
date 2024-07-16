@@ -4,7 +4,9 @@ import com.catharina.auttentica.Empresa.domain.Empresa;
 import lombok.Builder;
 import lombok.Value;
 
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Value
 public class EmpresaResponse {
@@ -22,5 +24,11 @@ public class EmpresaResponse {
         this.imagemLogo = empresa.getImagemLogo();
         this.instagram = empresa.getInstagram();
         this.site = empresa.getSite();
+    }
+
+    public static List<EmpresaResponse> converte(List<Empresa> empresas){
+        return empresas.stream()
+                .map(EmpresaResponse::new)
+                .collect(Collectors.toList());
     }
 }

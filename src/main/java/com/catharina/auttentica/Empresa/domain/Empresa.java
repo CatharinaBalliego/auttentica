@@ -1,13 +1,12 @@
 package com.catharina.auttentica.Empresa.domain;
 
-import com.catharina.auttentica.Empresa.application.api.CadastrarEmpresaRequest;
+import com.catharina.auttentica.Empresa.application.api.EmpresaRequest;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.UUID;
@@ -32,7 +31,7 @@ public class Empresa {
     private Date dataCadastro;
 
 
-    public Empresa(CadastrarEmpresaRequest request) {
+    public Empresa(EmpresaRequest request) {
         this.id = UUID.randomUUID();
         this.nome = request.getNome();
         this.descricao = request.getDescricao();
@@ -40,5 +39,13 @@ public class Empresa {
         this.instagram = request.getInstagram();
         this.site = request.getSite();
         this.dataCadastro = Date.valueOf(LocalDate.now());
+    }
+
+    public void atualizar(EmpresaRequest request) {
+        this.nome = request.getNome();
+        this.descricao = request.getDescricao();
+        this.imagemLogo = request.getImagemLogo();
+        this.instagram = request.getInstagram();
+        this.site = request.getSite();
     }
 }
