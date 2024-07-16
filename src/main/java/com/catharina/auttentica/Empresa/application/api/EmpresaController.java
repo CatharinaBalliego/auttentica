@@ -20,4 +20,12 @@ public class EmpresaController implements EmpresaAPI {
         log.info("[finish] EmpresaController - cadastrarEmpresa");
         return empresaId;
     }
+
+    @Override
+    public EmpresaResponse buscarEmpresa(UUID empresaId) {
+        log.info("[start] EmpresaController - buscarEmpresa");
+        EmpresaResponse empresa = empresaService.buscarEmpresaId(empresaId);
+        log.info("[finish] EmpresaController - buscarEmpresa");
+        return empresa;
+    }
 }

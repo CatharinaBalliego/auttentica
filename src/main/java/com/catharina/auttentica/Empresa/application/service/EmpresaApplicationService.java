@@ -1,6 +1,7 @@
 package com.catharina.auttentica.Empresa.application.service;
 
 import com.catharina.auttentica.Empresa.application.api.CadastrarEmpresaRequest;
+import com.catharina.auttentica.Empresa.application.api.EmpresaResponse;
 import com.catharina.auttentica.Empresa.application.repository.EmpresaRepository;
 import com.catharina.auttentica.Empresa.domain.Empresa;
 import lombok.RequiredArgsConstructor;
@@ -22,5 +23,13 @@ public class EmpresaApplicationService implements EmpresaService {
         log.info("[empresaId] Created - {}", idEmpresa);
         log.info("[finish] EmpresaApplicationService - cadastrarEmpresa");
         return idEmpresa;
+    }
+
+    @Override
+    public EmpresaResponse buscarEmpresaId(UUID empresaId) {
+        log.info("[start] EmpresaApplicationService - buscarEmpresaId");
+        Empresa empresa = empresaRepository.buscarEmpresa(empresaId);
+        log.info("[finish] EmpresaApplicationService - buscarEmpresaId");
+        return new EmpresaResponse(empresa);
     }
 }

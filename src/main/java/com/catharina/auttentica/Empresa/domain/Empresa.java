@@ -3,6 +3,7 @@ package com.catharina.auttentica.Empresa.domain;
 import com.catharina.auttentica.Empresa.application.api.CadastrarEmpresaRequest;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -15,11 +16,12 @@ import java.util.UUID;
 @Table(name = "empresa_tb")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Empresa {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "empresa_id")
-    private UUID Id;
+    private UUID id;
     private String nome;
     private String descricao;
     @Column(columnDefinition = "TEXT", name = "imagem_logo")
@@ -31,7 +33,7 @@ public class Empresa {
 
 
     public Empresa(CadastrarEmpresaRequest request) {
-        this.Id = UUID.randomUUID();
+        this.id = UUID.randomUUID();
         this.nome = request.getNome();
         this.descricao = request.getDescricao();
         this.imagemLogo = request.getImagemLogo();

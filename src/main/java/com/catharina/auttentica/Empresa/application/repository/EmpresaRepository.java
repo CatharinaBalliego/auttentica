@@ -8,4 +8,6 @@ import java.util.UUID;
 public interface EmpresaRepository {
 
     UUID salvarEmpresa(Empresa empresa);
+
+    Empresa buscarEmpresa(UUID empresaId);
 }

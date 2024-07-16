@@ -21,4 +21,12 @@ public class EmpresaInfraRepository implements EmpresaRepository {
         log.info("[finish] EmpresaInfraRepository - salvarEmpresa");
         return empresa.getId();
     }
+
+    @Override
+    public Empresa buscarEmpresa(UUID empresaId) {
+        log.info("[start] EmpresaInfraRepository - buscarEmpresa");
+        Empresa empresa = empresaSpringDataJPARepository.findById(empresaId).orElseThrow();
+        log.info("[finish] EmpresaInfraRepository - buscarEmpresa");
+        return empresa;
+    }
 }

@@ -13,4 +13,8 @@ public interface EmpresaAPI {
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     UUID cadastrarEmpresa(@RequestBody @Valid CadastrarEmpresaRequest request);
+
+    @GetMapping("/{empresaId}")
+    @ResponseStatus(code = HttpStatus.OK)
+    EmpresaResponse buscarEmpresa(@PathVariable UUID empresaId);
 }
