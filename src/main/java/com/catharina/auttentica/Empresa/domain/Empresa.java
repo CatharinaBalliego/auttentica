@@ -1,6 +1,7 @@
 package com.catharina.auttentica.Empresa.domain;
 
 import com.catharina.auttentica.Empresa.application.api.EmpresaRequest;
+import com.catharina.auttentica.Produto.domain.Produto;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -9,6 +10,7 @@ import lombok.NoArgsConstructor;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -29,6 +31,9 @@ public class Empresa {
     private String site;
     @Column(name = "data_cadastro")
     private Date dataCadastro;
+
+    @OneToMany(mappedBy = "empresa")
+    private Set<Produto> produtos;
 
 
     public Empresa(EmpresaRequest request) {
